@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Animations ──────────────────────────────────────────────────────── */
+@keyframes twinkle  { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.6; } }
+@keyframes wave     { from { transform: scaleY(0.4); } to { transform: scaleY(1); } }
+@keyframes shimmer  { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+@keyframes indeterminate {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.7; transform: scale(1.15); }
+}
+@keyframes fade-up  { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slide-down { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+
+.fade-up    { animation: fade-up 400ms ease-out both; }
+.slide-down { animation: slide-down 300ms ease-out both; }
+
+/* ─── Reset / global ──────────────────────────────────────────────────── */
+::placeholder { color: #5A7090; opacity: 1; }
+
+html, body, #root { min-height: 100vh; min-height: 100dvh; }
+
+/* iOS safe-area for notch */
+.safe-top    { padding-top: max(env(safe-area-inset-top), 0px); }
+.safe-bottom { padding-bottom: max(env(safe-area-inset-bottom), 0px); }
+
+/* No native pull-to-refresh inside Capacitor (handled by app) */
+body { overscroll-behavior-y: contain; }
+
+/* Better tap targets on mobile */
+button, [role="button"] { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar       { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(166, 200, 235, 0.12); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(166, 200, 235, 0.2); }
+
+/* Prevent zoom on input focus iOS */
+@supports (-webkit-touch-callout: none) {
+  input[type="text"], input[type="url"], input[type="password"], input[type="number"], textarea {
+    font-size: 16px !important;
+  }
+}

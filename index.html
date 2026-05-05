@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+
+    <!-- Identity -->
+    <title>Extend · Suno</title>
+    <meta name="description" content="Suno v5.5 extend workflow — continue your tracks." />
+
+    <!-- PWA -->
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#070F1F" />
+    <meta name="background-color" content="#070F1F" />
+
+    <!-- iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Extend" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+
+    <!-- Android Chrome -->
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-192.png" />
+
+    <!-- Preconnect Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" as="style"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+    <!-- OG -->
+    <meta property="og:title" content="Extend · Suno" />
+    <meta property="og:description" content="Suno v5.5 extend workflow — continue your tracks." />
+    <meta property="og:type" content="website" />
+
+    <style>
+      /* Splash before React mounts — prevents white flash on cold start */
+      html, body { background: #070F1F; color: #E6EEF8; margin: 0; }
+      body { font-family: 'Manrope', system-ui, sans-serif; -webkit-tap-highlight-color: transparent; }
+      #app-loader {
+        position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+        background: #070F1F; z-index: 9999;
+      }
+      #app-loader.hidden { opacity: 0; pointer-events: none; transition: opacity 300ms ease; }
+      .pulse-dot {
+        width: 8px; height: 8px; border-radius: 50%;
+        background: #A5C8F0; box-shadow: 0 0 12px #A5C8F0;
+        animation: pulse 1.4s ease-in-out infinite;
+      }
+      @keyframes pulse { 0%,100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.1); } }
+    </style>
+  </head>
+  <body>
+    <div id="app-loader"><div class="pulse-dot"></div></div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
